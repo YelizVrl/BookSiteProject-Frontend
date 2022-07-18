@@ -1,0 +1,92 @@
+<!-- <div class="shadow p-3 mb-5 bg-body rounded">
+  <body class="text-center">
+
+    <main class="form-signin" style="background-color: #e8ebee65;">
+      <form [formGroup] = "loginForm">
+        <h1 class="h3 mb-3 fw-normal">Lütfen Giriş Yapın</h1>
+
+        <div class="form-floating" >
+          <input
+          formControlName = "email"
+          type="email"
+          class="form-control"
+          id="floatingInput"
+          placeholder="name@example.com">
+          <label for="floatingInput">E-Posta</label>
+        </div>
+        <div class="form-floating">
+          <input
+          formControlName = "password"
+          type="password"
+          class="form-control"
+          id="floatingPassword"
+          placeholder="Password">
+          <label for="floatingPassword">Parola</label>
+        </div>
+
+        <div class="checkbox mb-3">
+          <label>
+            <input
+            type="checkbox"
+            value="remember-me"> Remember me
+          </label>
+        </div>
+        <button
+        class="w-100 btn btn-lg btn-primary"
+        (click)="login()">Giriş Yap</button>
+        <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
+      </form>
+    </main>
+      </body>
+
+</div> -->
+
+
+<div >
+  <body class="text-center account-page" style="background-color:  #f1f1f1;">
+    <main class="form-signin account-card shadow p-3 mb-5 bg-body rounded">
+        <div class="card-body  ">
+            <div class="logo" style="font-size: 40px;"><span>Oturum </span><span><span>Açın</span></span></div>
+            <hr class="solid">
+            <form [formGroup] = "loginForm" class="mt-4">
+                <div class="form-floating mb-2">
+                  <input
+                  formControlName = "email"
+                  type="email"
+                  class="form-control"
+                  id="floatingInput"
+                  placeholder="name@example.com">
+                  <label for="floatingInput">E-Posta</label>
+                </div>
+                <div class="form-floating mb-2">
+                  <input
+                  formControlName = "password"
+                  type="password"
+                  class="form-control"
+                  id="floatingPassword"
+                  placeholder="Password">
+                  <label for="floatingPassword">Parola</label>
+                </div>
+                <div class="checkbox mb-3">
+                  <label>
+                    <input
+                    type="checkbox"
+                    value="remember-me"> Remember me
+                  </label>
+                </div>
+
+                <button (click)="login()" class="w-100 btn btn-lg"
+                    style="background-color: #1d2b3f;  color: #8d9cb2;"
+                    type="submit"><strong>GİRİŞ
+                        YAP</strong></button>
+
+                <div class="text-dark mt-3" style="font-size:14px">
+                    Üye değil misin? <a routerLink="login"
+                        style="color: #1d2b3f;">Hemen üye ol!</a>
+                </div>
+            </form>
+        </div>
+    </main>
+  </body>
+  </div>
+

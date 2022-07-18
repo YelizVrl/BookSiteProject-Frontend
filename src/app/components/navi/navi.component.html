@@ -1,0 +1,124 @@
+<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        </li>
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav> -->
+
+
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar shadow p-2 mb-9 " id="ftco-navbar" style="background-color: #1d2b3f;">
+  <div class="container">
+    <a class="navbar-brand" >KİTAP <span>MAHZENİ</span></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="oi oi-menu"></span> Menu
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-between" id="ftco-nav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item"><a routerLink="books" class="nav-link">Anasayfa</a></li>
+        <!-- <li class="nav-item"><a routerLink="books" class="nav-link active">Kitaplar</a></li> -->
+        <li class="nav-item"><a routerLink="about" class="nav-link">Hakkımızda</a></li>
+        <li class="nav-item"><a routerLink="contact" class="nav-link">İletişim</a></li>
+
+        <li *ngIf="isLoggedIn | async"  class="nav-item dropdown">
+          <div *ngIf="isAdmin">
+            <div *ngIf="isAdmin === true">
+              <a class="nav-link active dropdown-toggle rounded " style="background-color: #5b6a80;" id="managerDropdown" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false" >
+                Yönetim
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: #1d2b3f;">
+                <li><a class="dropdown-item" style="color: #a9adb1;" routerLink="/admin/books/manager">Kitapları Düzenle</a></li>
+                <li><a class="dropdown-item" style="color: #a9adb1;" routerLink="/admin/category/manager">Kategorileri Düzenle</a></li>
+                <li><a class="dropdown-item" style="color: #a9adb1;" routerLink="/admin/publishingHouse/manager">Yayınevlerini Düzenle</a></li>
+                <li><a class="dropdown-item" style="color: #a9adb1;" routerLink="/admin/writer/manager">Yazarları Düzenle</a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+
+      </ul>
+      <div class="">
+        <div *ngIf="!(isLoggedIn | async)">
+          <button routerLink="/login" class="btn btn-secondary me-2" style="background-color: #5b6a80;">
+            <i class="bi bi-person-fill"></i>
+            Giriş Yap
+          </button>
+          <button routerLink="/register" class="btn btn-secondary" style="background-color: #5b6a80;">
+            <i class="bi bi-box-arrow-in-right"></i>
+            Kayıt Ol
+          </button>
+        </div>
+        <!-- <div class="dropdown" >
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            <img width="30px" height="30px" class="rounded-circle"  />
+
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="btn dropdown-item" routerLink="/user-profile">Bilgilerim</a></li>
+            <li><a class="btn dropdown-item" routerLink="/my-orders">Siparişlerim</a></li>
+            <li><a class="btn dropdown-item" routerLink="/change-password">Şifremi Değiştir</a></li>
+            <li><a class="btn dropdown-item" >Çıkış Yap</a></li>
+          </ul>
+        </div> -->
+      </div>
+
+
+
+      <div *ngIf="isLoggedIn | async" class="nav-item dropdown">
+        <li class="nav-item d-flex align-items-center">
+          <!--Profilim-->
+          <a class="nav-link active dropdown-toggle rounded " style="background-color: #5b6a80;" id="managerDropdown" role="button"
+          data-bs-toggle="dropdown" aria-expanded="false">
+            <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="white" class="bi bi-person-circle"
+              viewBox="0 0 16 16">
+              <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+              <path fill-rule="evenodd"
+                d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+            </svg>
+            <span class="text-light ms-2">Admin</span>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: #1d2b3f;">
+            <li><a  class="dropdown-item" style="color: #a9adb1;" routerLink="/profile" >Profilim</a></li>
+
+            <li><a (click)="logOut()"  class="dropdown-item" style="color: #a9adb1;" >Çıkış yap</a></li>
+          </ul>
+        </li>
+      </div>
+
+
+
+
+    </div>
+  </div>
+</nav>

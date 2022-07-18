@@ -1,0 +1,84 @@
+
+  <div class="card" style="background-color:#1d2b3f00; ">
+    <header class="card-header">
+      <button class="collapse-button" type="button" data-bs-toggle="collapse" data-bs-target="#catCollapse"  class="w-100 btn" (click)="getAllCategoryClass()" routerLink="/books"
+      style="background-color: #f1f1f1;"
+          aria-expanded="false" aria-controls="catCollapse">
+          <i class="icon-control fa fa-chevron-down"></i>
+          <h6 class="logo" style="font-size: 20px; color: #24334b;">KİTAPLAR </h6>
+      </button>
+    </header>
+
+  </div>
+
+<br>
+<br>
+
+
+
+<!-- <ul class="list-group">
+  <li [class]="getAllCategoryClass()"
+   routerLink = "/books">Tüm ürünler</li>
+  <br> -->
+
+  <!-- <li (click)="setCurrentCategory(category)"
+  routerLink = "/books/category/{{category.categoryId}}"
+  *ngFor="let category of categories"
+  [class]="getCurrentCategoryClass(category)">{{category.categoryName}}</li>
+</ul> -->
+
+
+
+
+<div class="accordion">
+  <div class="card" style="background-color: #1d2b3f00;" >
+      <article class="filter-group">
+          <header class="card-header">
+              <button class="collapse-button" type="button" data-bs-toggle="collapse" data-bs-target="#categoryCollapse" class="w-100 btn"
+              style="background-color: #f1f1f1;"
+                  aria-expanded="false" aria-controls="categoryCollapse">
+                  <i class="icon-control fa fa-chevron-down"></i>
+                  <h6 class="logo" style="font-size: 20px; color: #24334b;">KATEGORİLER </h6>
+              </button>
+          </header>
+          <div class="collapse multi-collapse scrollbar scrollbar-primary" id="categoryCollapse">
+              <div class="card-body overflow-auto ">
+
+
+
+
+
+                <div *ngIf="dataLoaded==false" class="spinner-border text-primary" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+                <table *ngIf="dataLoaded==true" class="table">
+
+                  <div class="mb-3">
+                      <label for="filterText" class="logo" style="font-size: 18px; color: #d1d9e8;"><strong>Kategori ara</strong></label>
+                      <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="Ara...">
+                    </div>
+                <div *ngIf="filterText.length>=2" class="alert alert-warning">
+                  {{filterText}} Aranıyor
+                 </div>
+                <ul class="list-group">
+
+                  <li (click)="setCurrentCategory(category)"
+                  routerLink="/books/category/{{category.categoryId}}"
+                   *ngFor="let category of categories | categoryFilter:filterText"  [class]="getCurrentCategoryClass(category)">{{category.categoryName}}</li>
+                </ul>
+
+                </table>
+
+
+
+
+
+
+
+
+              </div>
+          </div>
+      </article>
+
+  </div>
+</div>

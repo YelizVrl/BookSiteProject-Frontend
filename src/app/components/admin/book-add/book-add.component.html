@@ -1,0 +1,146 @@
+<div class="modal fade" id="bookModul" data-bs-backdrop="staticBackdrop" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="csard-header">
+            <h3 class="page-header">Yeni Kitap Ekle</h3>
+        </div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="content mt-1 w-md-75 m-auto">
+
+            <div class="mb-4">
+                <div class="d-flex justify-content-end my-2">
+                </div>
+                <ul class="nav nav-pills" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">
+                            <span ></span>
+                            Genel Bilgiler
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">
+                            <span></span>
+                            Fotoğraflar
+                        </button>
+                    </li>
+                </ul>
+                <div class="tab-content my-3" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <div class="tab-item">
+                            <div class="carad-body">
+                                <form [formGroup]="bookAddForm">
+                                    <div class="form-group mb-3">
+                                        <label for="bookName">Kitap Adı: </label>
+                                        <input type="text"
+                                        id="bookName"
+                                        class="form-control"
+                                        formControlName="bookName"
+                                        >
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label for="writerSelect">Yazar: </label>
+                                        <select id="writerSelect" class="form-select" formControlName="writerId">
+                                            <option *ngFor="let writer of writers" value="{{writer.writerId}}">
+                                                {{writer.writerName}}
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label for="publishingHouseSelect">Yayınevi: </label>
+                                        <select id="publishingHouseSelect" class="form-select" formControlName="publishingHouseId">
+                                            <option  *ngFor="let publishingHouse of publishingHouses" value="{{publishingHouse.publishingHouseId}}" >
+                                              {{publishingHouse.publishingHouseName}}
+                                            </option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group mb-3">
+                                      <label for="categorySelect">Kitap Türü: </label>
+                                      <select id="categorySelect" class="form-select" formControlName="categoryId">
+                                          <option  *ngFor="let category of categories" value="{{category.categoryId}}"  >
+                                              {{category.categoryName}}
+                                          </option>
+                                      </select>
+                                  </div>
+
+                                    <div class="form-group mb-3">
+                                        <label for="pageNumber">Sayfa Sayısı: </label>
+                                        <input type="string" id="pageNumber" formControlName="pageNumber" class="form-control"
+                                            min="0" max="1000000" />
+                                    </div>
+
+                                    <div class="form-group mb-3">
+                                      <label for="pageTypeSelect">Sayfa Türü: </label>
+                                      <select id="pageTypeSelect" class="form-select" formControlName="pageTypeId">
+                                          <option *ngFor="let pageType of pageTypes" value="{{pageType.pageTypeId}}" >
+                                              {{pageType.pageTypeName}}
+                                          </option>
+                                      </select>
+                                  </div>
+
+                                  <div class="form-group mb-3">
+                                    <label for="coverTypeSelect">Kapak Türü: </label>
+                                    <select id="coverTypeSelect" class="form-select" formControlName="coverTypeId">
+                                        <option *ngFor="let coverType of coverTypes" value="{{coverType.coverTypeId}}">
+                                            {{coverType.coverTypeName}}
+                                        </option>
+                                    </select>
+                                </div>
+
+                                    <div class="form-group mb-3">
+                                        <label for="price">Fiyat: </label>
+                                        <input type="number" id="price" formControlName="price" class="form-control"
+                                            min="0" max="1900" />
+                                    </div>
+
+                                    <div class="form-group mb-3">
+                                      <label for="unitsInStock">Stok Adedi: </label>
+                                      <input type="number" id="unitsInStock" formControlName="unitsInStock" class="form-control"
+                                          min="0" max="1900"/>
+                                  </div>
+
+                                    <div class="form-group">
+                                        <label for="description">Konu:</label>
+                                        <textarea formControlName="description" class="form-control"
+                                            placeholder="Kitabın konusunu giriniz." id="description"
+                                            rows="5"></textarea>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+
+
+                      <div class="alert alert-info">Sadece 1 fotoğraf yükleyebilirsiniz.</div>
+                        <form>
+                            <div class="mb-3">
+                                <label for="formFile" class="form-label">Kitap fotoğrafını seçin ve yükleyin</label>
+                                <input class="form-control" type="file" id="formFile" accept="image/*" (change)="imagePreview($event)" [disabled]="!checkBookImageCount()" >
+                              </div>
+                        </form>
+                        <div class="d-flex flex-wrap">
+                            <div class="car-photo me-4" *ngFor="let filePath of filePaths; let i = index" >
+                                <img [src]="filePath" >
+                                <p class="my-2 text-center">Fotoğraf {{i + i}}</p>
+                                <button class="btn btn-danger" (click)="removePhoto(i)"  >Kaldır</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer" *ngIf="checkBookAddButton()">
+          <button type="button" class="btn btn-primary" (click)="addBook()">Ekle</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+

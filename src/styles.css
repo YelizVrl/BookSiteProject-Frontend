@@ -1,1 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+/*kategorilerin tıklandğındaki rengi değiştirdi.*/
+.list-group .list-group-item.active {
+  z-index: 2;
+  color: #fff;
+  background-color: #1d2b3f;
+  border-color: #1d2b3f;
+}

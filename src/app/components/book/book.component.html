@@ -1,0 +1,138 @@
+<div *ngIf="dataLoaded==false" class="spinner-border text-secondary" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+<!-- <table *ngIf="dataLoaded==true" class="table">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Kitap</th>
+      <th>Yazar</th>
+      <th>Türü</th>
+      <th>Yayınevi</th>
+      <th>Kapak Türü</th>
+      <th>Sayfa Sayısı</th>
+      <th>Sayfa Türü</th>
+      <th>Fiyat</th>
+    </tr>
+  </thead> -->
+  <!-- <tr *ngFor="let book of books">
+    <td>{{book.bookId}}</td>
+    <td>{{book.categoryId}}</td>
+    <td>{{book.writerId}}</td>
+    <td>{{book.publishingHouseId}}</td>
+    <td>{{book.coverTypeId}}</td>
+    <td>{{book.pageTypeId}}</td>
+    <td>{{book.bookName}}</td>
+    <td>{{book.pageNumber}}</td>
+    <td>{{book.unitsInStock}}</td>
+    <td>{{book.price}}</td>
+  </tr> -->
+
+  <!-- <tr *ngFor="let bookDetail of bookDetails">
+    <td>{{bookDetail.bookId}}</td>
+    <td>{{bookDetail.bookName}}</td>
+    <td>{{bookDetail.writerName}}</td>
+    <td>{{bookDetail.categoryName}}</td>
+    <td>{{bookDetail.publishingHouseName}}</td>
+    <td>{{bookDetail.coverTypeName}}</td>
+    <td>{{bookDetail.pageNumber}}</td>
+    <td>{{bookDetail.pageTypeName}}</td>
+    <td>{{bookDetail.price}}</td>
+  </tr>
+</table> -->
+
+
+<!-- Çalışan kod -->
+<!-- <div *ngIf="dataLoaded!=false" class="container" class="shadow p-3 mb-5 bg-body rounded">
+  <div class="row ">
+    <div *ngFor="let bookDetails of bookDetails" class="card col-md-3 mt-4 mx-1 pt-2"  style="width: 14rem; background-color: #F5F5F5;">
+        <img *ngIf="bookDetails.imagePath"
+        routerLink="/books/bookdetail/{{ bookDetails.bookId }}"
+         [src]="bookDetails.imagePath.length !== 0 ? imageUrl+bookDetails.imagePath[0] : imageUrl + 'DefaultImage.jpg'"
+          style="object-fit: cover;"  class="card-img-top" alt="..." width="333px" height="333px">
+        <div class="card-body">
+          <h5 class="card-title">{{bookDetails.bookName}}</h5>
+        </div>
+
+        <ul class="list-group list-group-flush">
+          <li style="font-size: 14px; background-color: #F5F5F5;" class="list-group-item">{{bookDetails.writerName}}</li>
+          <li style="font-size: 14px; background-color: #F5F5F5;" class="list-group-item">{{bookDetails.publishingHouseName}}</li>
+          <li style="font-size: 14px; background-color: #F5F5F5;" class="list-group-item">{{bookDetails.price | currency: "₺"}}</li>
+          <div class="card-body">
+            <button routerLink="/books/bookdetail/{{ bookDetails.bookId }}"   type="button" class="btn btn-primary mx-4">Sepete Ekle</button>
+          </div>
+        </ul>
+    </div>
+  </div>
+</div> -->
+
+
+
+
+  <div class="container">
+
+    <div class="mb-3">
+      <label for="filterText" class="logo" style="font-size: 18px; color: #24334b;"><strong>Kitap ara</strong></label>
+      <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="Kitap adı ara...">
+  </div>
+
+  <div *ngIf="filterText" class="alert alert-warning">
+      <strong>{{filterText}}</strong> aradınız.
+  </div>
+
+
+    <div class="row">
+      <div class="col-md-3" style="background-color: #1d2b3fcc;">
+
+        <br>
+        <app-category></app-category>
+        <br><br>
+        <app-writer></app-writer>
+        <br><br>
+        <app-publishing-house></app-publishing-house>
+
+      </div>
+
+
+      <div class="col-md-9">
+
+
+      <div *ngIf="dataLoaded!=false" class="container" class="shadow p-3 mb-5 bg-body rounded">
+        <div class="row">
+          <div *ngFor="let bookDetails of bookDetails | bookFilter:filterText" class="card col-md-3 mt-4 mx-1 pt-2"  style="width: 13rem; background-color: #fcfcfc;">
+              <img *ngIf="bookDetails.imagePath"
+              routerLink="/books/bookdetail/{{ bookDetails.bookId }}"
+               [src]="bookDetails.imagePath.length !== 0 ? imageUrl+bookDetails.imagePath[0] : imageUrl + 'DefaultImage.jpg'"
+                style="object-fit: cover;"  class="card-img-top" alt="..." width="300px" height="300px">
+              <div class="card-body">
+                <h5 class="card-title" style="color:#24334b;">{{bookDetails.bookName}}</h5>
+              </div>
+
+              <ul class="list-group list-group-flush">
+                <li style="font-size: 13px; background-color: #fcfcfc;" class="list-group-item">{{bookDetails.writerName}}</li>
+                <li style="font-size: 13px; background-color: #fcfcfc;" class="list-group-item">{{bookDetails.publishingHouseName}}</li>
+                <li style="font-size: 13px; background-color: #fcfcfc;" class="list-group-item">{{bookDetails.price | currency: "₺"}}</li>
+                <div class="card-body">
+                  <button routerLink="/books/bookdetail/{{ bookDetails.bookId }}"   type="button" class="btn btn-secondary mx-3" style="background-color: #8d9cb2;">Sepete Ekle</button>
+                </div>
+              </ul>
+          </div>
+        </div>
+      </div>
+      </div>
+
+
+
+
+    </div>
+
+
+
+
+  </div>
+
+
+
+
+
+

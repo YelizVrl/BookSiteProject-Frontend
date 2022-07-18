@@ -1,0 +1,73 @@
+<div *ngIf="books" class="cont" class="shadow p-3 mb-5 bg-body rounded" >
+  <div class="card" style="background-color: #f1f1f1 ;" >
+      <div class="card-header text-center  bg-gradient text-light" style="background-color: #1d2b3f;" >
+          <h3>Kitap Yönetimi</h3>
+          ({{books.length}} kitap listelendi)
+      </div>
+      <div class="card-body table-responsive">
+          <table class="table align-middle">
+              <thead>
+                  <tr class=" bg-gradient text-center" style="background-color: #8090a7;">
+                      <th scope="col">ID</th>
+                      <th scope="col"></th>
+                      <th scope="col">Kitap Adı</th>
+                      <th scope="col">Yazar</th>
+                      <th scope="col">Yayınevi</th>
+                      <th scope="col">Kitap Türü</th>
+                      <th scope="col">Sayfa Sayısı</th>
+                      <th scope="col">Sayfa Türü</th>
+                      <th scope="col">Kapak Türü</th>
+                      <th scope="col">Fiyat</th>
+                      <th scope="col">
+                             <button type="button" class="btn btn-success float-end px-4" style="background-color: #1a6b44;"  data-bs-toggle="modal" data-bs-target="#bookModul">
+                              Kitap Ekle
+                            </button></th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let book of books" class="text-center">
+                      <td><strong>{{book.bookId}}</strong></td>
+                      <td><img [src]="getImagePath(book.imagePath[0])" height="50"></td>
+                      <td>{{book.bookName}}</td>
+                      <td>{{book.writerName}}</td>
+                      <td>{{book.publishingHouseName}}</td>
+                      <td>{{book.categoryName}}</td>
+                      <td>{{book.pageNumber}}</td>
+                      <td>{{book.pageTypeName}}</td>
+                      <td>{{book.coverTypeName}}</td>
+                      <td>{{book.price}}</td>
+                      <td>
+                          <div class="btn-group float-end">
+                              <button routerLink="/books/bookdetail/{{book.bookId}}" type="button"
+                                  class="btn btn-success px-2 mx-1" style="background-color: #1a6b44;">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                      class="bi bi-search" viewBox="0 0 16 16">
+                                      <path
+                                          d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                                  </svg>
+                              </button>
+                              <button routerLink="update" type="button"  class="btn btn-dark px-2 mx-1" >
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                      class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                      <path
+                                          d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                      <path fill-rule="evenodd"
+                                          d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                                  </svg>
+                              </button>
+                              <button  type="button" class="btn btn-danger px-2 mx-1" (click)="delete(book)"style="background-color: #9f1515;" role="button">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                      class="bi bi-archive-fill" viewBox="0 0 16 16">
+                                      <path
+                                          d="M12.643 15C13.979 15 15 13.845 15 12.5V5H1v7.5C1 13.845 2.021 15 3.357 15h9.286zM5.5 7h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1zM.8 1a.8.8 0 0 0-.8.8V3a.8.8 0 0 0 .8.8h14.4A.8.8 0 0 0 16 3V1.8a.8.8 0 0 0-.8-.8H.8z">
+                                      </path>
+                                  </svg>
+                              </button>
+                          </div>
+                      </td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+<div class="card mb-3"  class="shadow p-3 mb-5 bg-body rounded">
+  <div class="row g-0">
+    <div class="col-md-4 mt-2">
+        <img [src]="imageUrl+bookImagePaths[0]" alt="image slide"class="img-fluid rounded-start"  width="333px" height="333px">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <div *ngFor="let book of books" class="card-body">
+          <div class="card-body detailsFontInfo">
+
+              <h5 class="card-title" style="font-size: 30px;">
+              {{ book.bookName }}
+              </h5>
+          </div>
+          <ul class="list-group list-group-flush  detailsFontInfo">
+              <li class="list-group-item"><b>Yazar :</b> {{ book.writerName }}</li>
+              <li class="list-group-item"><b>Yayınevi :</b> {{ book.publishingHouseName }}</li>
+              <li class="list-group-item"><b>Kitap Türü :</b> {{ book.categoryName }}</li>
+              <li class="list-group-item"><b>Sayfa Sayısı :</b> {{ book.pageNumber }}</li>
+              <li class="list-group-item"><b>Sayfa Türü :</b> {{ book.pageTypeName }}</li>
+              <li class="list-group-item"><b>Kapak Türü :</b> {{ book.coverTypeName }}</li>
+              <li class="list-group-item"><b>Fiyat :</b> {{ book.price }}</li>
+              <li class="list-group-item"><b>Konu :</b> {{ book.description }}</li>
+
+          </ul>
+          <br>
+          <button  type="button" class="btn btn-secondary" style="background-color: #8d9cb2;">Sepete Ekle</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+

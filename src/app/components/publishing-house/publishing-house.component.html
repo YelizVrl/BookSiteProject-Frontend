@@ -1,0 +1,64 @@
+<!-- <ul class="list-group">
+  <li (click)="setCurrentPublishingHouse(publishingHouse)"
+  routerLink = "/books/publishingHouse/{{publishingHouse.publishingHouseId}}"
+  *ngFor="let publishingHouse of publishingHouses"
+  [class]="getCurrentPublishingHouseClass(publishingHouse)">{{publishingHouse.publishingHouseName}}</li>
+</ul> -->
+
+
+
+
+<div class="accordion">
+  <div class="card"  style="background-color:#1d2b3f00;">
+      <article class="filter-group">
+          <header class="card-header">
+              <button class="collapse-button" type="button" data-bs-toggle="collapse" data-bs-target="#publishingHouseCollapse" class="w-100 btn"
+              style="background-color: #f1f1f1;"
+                  aria-expanded="false" aria-controls="publishingHouseCollapse">
+                  <i class="icon-control fa fa-chevron-down"></i>
+                  <h6 class="logo" style="font-size: 20px; color: #24334b;">YAYINEVLERİ </h6>
+              </button>
+          </header>
+          <div class="collapse multi-collapse scrollbar scrollbar-primary" id="publishingHouseCollapse">
+              <div class="card-body overflow-auto ">
+
+
+
+
+
+                <div *ngIf="dataLoaded==false" class="spinner-border text-primary" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+                <table *ngIf="dataLoaded==true" class="table">
+
+                  <div class="mb-3">
+                    <label for="filterText" class="logo" style="font-size: 18px; color: #d1d9e8;"><strong>Yayınevi ara</strong></label>
+                      <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="Ara...">
+                    </div>
+                <ul class="list-group">
+
+                  <li (click)="setCurrentPublishingHouse(publishingHouse)"
+                  routerLink = "/books/publishingHouse/{{publishingHouse.publishingHouseId}}"
+                   *ngFor="let publishingHouse of publishingHouses | publishingHouseFilter:filterText"  [class]="getCurrentPublishingHouseClass(publishingHouse)">{{publishingHouse.publishingHouseName}}</li>
+                </ul>
+
+                </table>
+
+
+
+
+
+
+
+
+              </div>
+          </div>
+      </article>
+
+  </div>
+</div>
+
+
+<br>
+<br>
+<br>
